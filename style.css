@@ -1,0 +1,120 @@
+
+/* ---------- Design tokens ---------- */
+:root {
+  --maroon: #6b1d2a;     /* deep pomegranate maroon */
+  --marigold: #f5a000;   /* genda phool marigold */
+  --rani: #c2185b;       /* rani pink */
+  --teal: #0e6b6b;       /* peacock teal */
+  --paper: #fff7e8;      /* turmeric-tinted page background */
+  --ink: #1b2330;        /* body text */
+  --line: #e6d3b3;       /* borders */
+  --radius: 6px;
+  --font-head: "Bricolage Grotesque", "Segoe UI", Arial, sans-serif;
+  --font-body: "Newsreader", Georgia, "Times New Roman", serif;
+}
+
+/* ---------- Base ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  line-height: 1.65;
+}
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.1; margin: 0 0 .6em; color: var(--maroon); }
+h1 { font-size: clamp(2.4rem, 6vw, 4.2rem); font-weight: 800; letter-spacing: -0.02em; }
+h2 { font-size: clamp(1.7rem, 3.5vw, 2.4rem); font-weight: 700; }
+h3 { font-size: 1.25rem; font-weight: 700; }
+p { margin: 0 0 1em; max-width: 62ch; }
+a { color: var(--maroon); }
+a:focus-visible, .btn:focus-visible { outline: 3px solid var(--marigold); outline-offset: 3px; }
+section, .site-footer { padding: 4rem clamp(1.25rem, 6vw, 5rem); }
+
+/* ---------- Header ---------- */
+.site-header {
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 1rem;
+  padding: .9rem clamp(1.25rem, 6vw, 5rem);
+  background: var(--maroon);
+  border-bottom: 8px solid transparent;
+  border-image: repeating-linear-gradient(90deg, var(--marigold) 0 28px, var(--rani) 28px 56px, var(--teal) 56px 84px) 1;
+}
+.logo { display: flex; align-items: center; gap: .7rem; text-decoration: none; }
+.logo-plate {
+  display: grid; place-items: center; width: 2.4rem; height: 2.4rem;
+  background: var(--marigold); color: var(--maroon);
+  font: 800 1.4rem var(--font-head); border-radius: var(--radius);
+}
+.logo-text { color: #fff; font: 700 1.2rem var(--font-head); }
+.nav-list { display: flex; gap: 1.5rem; list-style: none; margin: 0; padding: 0; }
+.nav-list a { color: #fff; text-decoration: none; font: 500 1rem var(--font-head); padding: .3rem 0; border-bottom: 2px solid transparent; }
+.nav-list a:hover { border-bottom-color: var(--marigold); }
+
+/* ---------- Hero ---------- */
+.hero { display: grid; grid-template-columns: 1.1fr 1fr; gap: 3rem; align-items: center; }
+.lead { font-size: 1.3rem; }
+.btn {
+  display: inline-block; padding: .85rem 1.6rem;
+  background: var(--marigold); color: var(--maroon);
+  font: 700 1rem var(--font-head); text-decoration: none; border-radius: var(--radius);
+  transition: background .2s;
+}
+.btn:hover { background: var(--maroon); color: #fff; }
+
+/* departure-board table */
+.hero-board { background: var(--maroon); border-radius: var(--radius); padding: 1.2rem; overflow-x: auto; }
+.hero-board table { width: 100%; border-collapse: collapse; color: var(--marigold); font-family: var(--font-head); }
+.hero-board caption { text-align: left; color: #fff; font-weight: 700; padding-bottom: .8rem; }
+.hero-board th, .hero-board td { text-align: left; padding: .7rem .5rem; border-top: 1px solid rgba(255,255,255,.2); font-weight: 500; }
+.hero-board thead th { color: #fff; font-size: .9rem; border-top: 0; }
+.hero-board td:last-child, .hero-board thead th:last-child { text-align: right; }
+
+/* ---------- Menu cards ---------- */
+.menu { background: #fffdf8; border-block: 1px solid var(--line); }
+.card-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.card { border: 1px solid var(--line); border-top: 6px solid var(--teal); border-radius: var(--radius); padding: 1.5rem; }
+.card-feature { border-top-color: var(--rani); background: var(--paper); }
+.card p { margin: 0; }
+
+/* ---------- Route (sequence) ---------- */
+.stations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; list-style: none; margin: 2rem 0 0; padding: 0; position: relative; }
+.stations::before { content: ""; position: absolute; top: .7rem; left: 0; right: 0; height: 4px; background: var(--maroon); }
+.stations li { position: relative; padding-top: 2.2rem; }
+.stations li::before {
+  content: ""; position: absolute; top: 0; left: 0;
+  width: 1.5rem; height: 1.5rem; border-radius: 50%;
+  background: var(--marigold); border: 4px solid var(--maroon);
+}
+
+/* ---------- Story + aside ---------- */
+.story { display: grid; grid-template-columns: 2fr 1fr; gap: 3rem; background: #fffdf8; border-top: 1px solid var(--line); }
+.story-aside { background: var(--paper); border-left: 6px solid var(--rani); padding: 1.5rem; align-self: start; }
+.story-aside dt { font: 700 .95rem var(--font-head); color: var(--teal); margin-top: 1rem; }
+.story-aside dd { margin: 0; font-size: 1.15rem; }
+
+/* ---------- Footer ---------- */
+.site-footer { background: var(--maroon); color: #fff; display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; border-top: 8px solid transparent; border-image: repeating-linear-gradient(90deg, var(--marigold) 0 28px, var(--rani) 28px 56px, var(--teal) 56px 84px) 1; }
+.site-footer h2 { color: var(--marigold); font-size: 1.2rem; }
+.site-footer a { color: #fff; }
+.site-footer address { font-style: normal; }
+.copy { grid-column: 1 / -1; margin: 1rem 0 0; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,.25); font-size: .95rem; max-width: none; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero, .story { grid-template-columns: 1fr; gap: 2rem; }
+  .card-grid { grid-template-columns: 1fr; }
+  .site-footer { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 600px) {
+  body { font-size: 1.05rem; }
+  section, .site-footer { padding-block: 2.5rem; }
+  .site-header { justify-content: center; }
+  .nav-list { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+  .stations { grid-template-columns: 1fr; }
+  .stations::before { top: 0; bottom: 0; left: .7rem; right: auto; width: 4px; height: auto; }
+  .stations li { padding: 0 0 0 2.6rem; }
+  .site-footer { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
